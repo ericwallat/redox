@@ -21,7 +21,6 @@ class github(object):
 
     def get_pulls(self, name, page):
         url2 = GITHUB_API + 'repos/' + self.org + '/' + name + '/pulls?state=all&per_page=100&page=' + str(page)
-        print(url2)
         pulls = self.make_request(url2)
         return pulls.json()
 
@@ -37,11 +36,11 @@ class github(object):
         else:
             return 1
 
-    def is_merged(self, pull):
+    def date_merged(self, pull):
         if pull['merged_at'] is None:
             return 0
         else:
-            return 1
+            return pull['merged_at']
 
 
 def main():
@@ -55,7 +54,6 @@ def main():
             if pull:
                 pulls.append(pull)
     pulls = [item for sublist in pulls for item in sublist]
-    print(len(pulls))
 
 
 if __name__ == '__main__':
