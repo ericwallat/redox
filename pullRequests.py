@@ -46,7 +46,7 @@ class GitHub(object):
         return pulls.json()
 
     def make_request(self, url):
-        """Sends the HTTP request to the Github API
+        """Sends the HTTP request to the Github API with the authorization header
 
         Args:
             url: The url to get data from
@@ -103,6 +103,7 @@ def main():
             if pull:
                 pulls.append(pull)
     pulls = [item for sublist in pulls for item in sublist]
+    print(len(pulls))
 
 
 if __name__ == '__main__':
