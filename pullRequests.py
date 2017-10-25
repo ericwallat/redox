@@ -76,7 +76,7 @@ class GitHub(object):
             return 1
 
     def date_merged(self, pull):
-        """Gets the number of pages in a repo with 100 pull request per page
+        """Gets the date the pull request was merged
 
         Args:
             pull: The pull request json
